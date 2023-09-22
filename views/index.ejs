@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        body{
+            background-color: rgb(183, 189, 195);
+        }
+        .qrcodegenerator{
+            font-size: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 90px;
+        }
+        .name{
+            
+            height: 30px;
+            width: 250px;
+            color: white;
+            background-color: rgb(26, 25, 25);
+            border: 10px;
+            border-radius: 3px;
+            border-color: white;
+        }
+        button{
+            font-size: 18px;
+            margin-left: 10px;
+            margin-bottom: 12px;
+            color: white;
+            border:10px;
+            border-radius: 10px;
+            height: 30px;
+            width: 100px;
+            background-color: rgb(64, 64, 219);
+            margin-top: 17px;
+            transition: transform 0.3s;
+        }
+        button:hover{
+            transform: scale(1.11); 
+
+            cursor: pointer;
+            color: rgb(170, 170, 170);
+        }
+        form{
+
+            display: flex;
+            justify-content: center;
+            
+        }
+        .form-div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+        input{
+            margin-top: 8px;
+        }
+        .image{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+        }
+
+        a{
+            font-size: 17px;
+            margin-left: 10px;
+            margin-bottom: 12px;
+            color: white;
+            border:10px;
+            border-radius: 10px;
+            height: 24px;
+            width: 140px;
+            padding: 6px;
+            background-color: rgb(64, 64, 219);
+            margin-top: 14px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        a:hover{
+            transform: scale(1.11); 
+
+            cursor: pointer;
+            color: rgb(170, 170, 170);
+        }
+    </style>
+</head>
+<body>
+    <div class="qrcodegenerator">
+    <h1>QR Code Generator</h1>
+</div>
+    <% if(locals.textEntered){ %>
+    <!-- <h1>Your entered text is </h1> -->
+    <div class="image">
+    <img src="<%=imagePath%>" alt="Image Not Found" >
+</div>
+    <%}%>
+    <form action="/submit" method="post">
+        <div class="form-div">
+        <input type="text" class="name" placeholder="Enter your text here" name="text">
+        <button type="submit">Submit</button>
+ <% if(locals.textEntered){ %>
+            <a href="/download" class="btn btn-primary" target="_blank">Download QR Code</a>
+<%}%>
+        <p>Copyright © <%= new Date().getFullYear() %>
+        </div>
+    </form>
+</body>
+</html>
